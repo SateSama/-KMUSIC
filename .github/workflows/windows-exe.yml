@@ -1,0 +1,28 @@
+name: Build KMUSIC for Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # rust-toolchain.toml pins the exact Rust version; rustup installs it on first use.
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: true
+
+      - name: Build
+        run: cargo build --release --package kmusic
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KMUSIC-windows
+          path: target/release/kmusic.exe
+          if-no-files-found: error
