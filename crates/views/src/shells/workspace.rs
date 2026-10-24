@@ -1,13 +1,13 @@
 use std::time::Duration;
 
 use gpui::prelude::*;
-use gpui::{AnyView, App, Context, Entity, FocusHandle, Render, StyleRefinement};
-use gpui::{Window, deferred, div};
+use gpui::{AnyView, App, Context, Entity, FocusHandle, FontWeight, Render, StyleRefinement};
+use gpui::{Window, deferred, div, px};
 use input::WORKSPACE_CONTEXT;
 use state::{Playback, Queue, SideTab};
 use ui::{
-    Activate, ActiveTheme as _, Deselect, Entrance, Remove, SelectNext, SelectPrevious, entering,
-    shown_listing, veiled,
+    Activate, ActiveTheme as _, Deselect, Entrance, Remove, SelectNext, SelectPrevious, Text,
+    entering, shown_listing, veiled,
 };
 
 use crate::chrome::{
@@ -323,6 +323,21 @@ impl Render for Workspace {
                     )
                     .child(self.sidebar_right.clone())
                     .when(overlay, |this| this.child(self.sidebar.clone())),
+            )
+            // KMUSIC wordmark, always visible just above the player.
+            .child(
+                div()
+                    .w_full()
+                    .h(px(22.))
+                    .flex()
+                    .items_center()
+                    .justify_center()
+                    .border_t_1()
+                    .border_color(cx.theme().border)
+                    .text_size(cx.theme().text(Text::Small))
+                    .font_weight(FontWeight::BOLD)
+                    .text_color(cx.theme().primary)
+                    .child("KMUSIC"),
             )
             .child(
                 div()
