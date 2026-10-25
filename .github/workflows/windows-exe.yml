@@ -6,7 +6,9 @@ on:
     branches: [main]
     paths-ignore:
       - "ios/**"
+      - "web/**"
       - ".github/workflows/ios.yml"
+      - ".github/workflows/pages.yml"
 
 jobs:
   build:

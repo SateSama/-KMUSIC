@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KMUSIC</title>
+  <meta name="theme-color" content="#0a0507">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="KMUSIC">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header id="top">
+      <h1>KMUSIC</h1>
+      <button id="logout" class="link" hidden>Déconnexion</button>
+    </header>
+
+    <main id="view" aria-live="polite"></main>
+
+    <footer id="dock" hidden>
+      <div id="wordmark">KMUSIC</div>
+
+      <div id="mini" hidden>
+        <img id="mini-cover" alt="">
+        <div class="meta">
+          <b id="mini-title"></b>
+          <span id="mini-artist"></span>
+        </div>
+        <button id="mini-toggle" class="icon" aria-label="Lecture / pause"></button>
+        <button id="mini-next" class="icon" aria-label="Suivant"></button>
+      </div>
+
+      <nav id="tabs">
+        <a href="#/" data-tab="albums">Albums</a>
+        <a href="#/search" data-tab="search">Recherche</a>
+      </nav>
+    </footer>
+
+    <section id="full" hidden>
+      <button id="full-close" class="link">Fermer</button>
+      <img id="full-cover" alt="">
+      <h2 id="full-title"></h2>
+      <p id="full-artist"></p>
+      <input id="full-seek" type="range" min="0" max="1" step="0.1" value="0" aria-label="Position">
+      <div class="times"><span id="full-pos">0:00</span><span id="full-dur">0:00</span></div>
+      <div class="controls">
+        <button id="full-prev" class="icon" aria-label="Précédent"></button>
+        <button id="full-toggle" class="icon big" aria-label="Lecture / pause"></button>
+        <button id="full-next" class="icon" aria-label="Suivant"></button>
+      </div>
+    </section>
+  </div>
+
+  <script src="md5.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
