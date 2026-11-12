@@ -628,7 +628,7 @@ theme-ocean = Oceano
 theme-rose = Rosa
 theme-lavender = Lavanda
 theme-amber = Âmbar
-theme-crimson = Crimson
+theme-violet = Violeta
 
 # corners
 corners-square = Quadrado

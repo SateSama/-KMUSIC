@@ -734,7 +734,7 @@ theme-ocean = Oqean
 theme-rose = Trëndafil
 theme-lavender = Lavandë
 theme-amber = Qelibar
-theme-crimson = Crimson
+theme-violet = Vjollcë
 
 # corners
 corners-square = Katror

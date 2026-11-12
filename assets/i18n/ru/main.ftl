@@ -764,7 +764,7 @@ theme-ocean = Океан
 theme-rose = Роза
 theme-lavender = Лаванда
 theme-amber = Янтарь
-theme-crimson = Crimson
+theme-violet = Фиолетовый
 
 # corners
 corners-square = Прямые

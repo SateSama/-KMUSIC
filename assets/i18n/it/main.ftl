@@ -629,7 +629,7 @@ theme-ocean = Oceano
 theme-rose = Rosa
 theme-lavender = Lavanda
 theme-amber = Ambra
-theme-crimson = Crimson
+theme-violet = Viola
 
 # corners
 corners-square = Squadrato

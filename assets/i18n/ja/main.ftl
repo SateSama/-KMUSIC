@@ -586,7 +586,7 @@ theme-ocean = オーシャン
 theme-rose = ローズ
 theme-lavender = ラベンダー
 theme-amber = アンバー
-theme-crimson = Crimson
+theme-violet = バイオレット
 
 # corners
 corners-square = 四角

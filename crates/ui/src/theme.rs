@@ -94,7 +94,7 @@ pub enum ThemeKind {
     Rose,
     Lavender,
     Amber,
-    Crimson,
+    Violet,
 }
 
 impl ThemeKind {
@@ -108,7 +108,7 @@ impl ThemeKind {
         Self::Rose,
         Self::Lavender,
         Self::Amber,
-        Self::Crimson,
+        Self::Violet,
     ];
 
     pub fn id(self) -> &'static str {
@@ -122,7 +122,7 @@ impl ThemeKind {
             Self::Rose => "rose",
             Self::Lavender => "lavender",
             Self::Amber => "amber",
-            Self::Crimson => "crimson",
+            Self::Violet => "violet",
         }
     }
 
@@ -137,7 +137,7 @@ impl ThemeKind {
             Self::Rose => t!("theme-rose"),
             Self::Lavender => t!("theme-lavender"),
             Self::Amber => t!("theme-amber"),
-            Self::Crimson => t!("theme-crimson"),
+            Self::Violet => t!("theme-violet"),
         }
     }
 
@@ -151,7 +151,8 @@ impl ThemeKind {
             "rose" => Self::Rose,
             "lavender" => Self::Lavender,
             "amber" => Self::Amber,
-            "crimson" => Self::Crimson,
+            // the fork's former default, kept so older settings files still resolve
+            "crimson" => Self::Violet,
             _ => Self::Dark,
         }
     }
@@ -726,33 +727,35 @@ impl Theme {
         theme
     }
 
-    /// Gothic Crimson: blood-tinted blacks with a crimson accent.
-    pub fn crimson() -> Self {
+    /// Violet: a modern streaming-client dark look, near-black surfaces with
+    /// a purple accent and quiet borders.
+    pub fn violet() -> Self {
         let mut theme = Self::dark();
-        theme.background = rgb(0x0a0507).into();
-        theme.foreground = rgb(0xe8dcdc).into();
-        theme.border = rgb(0x2a1216).into();
-        theme.muted = rgb(0x1a0b0e).into();
-        theme.muted_foreground = rgb(0xa08487).into();
-        theme.secondary = rgb(0x1c0d10).into();
-        theme.secondary_hover = rgb(0x2a1216).into();
-        theme.secondary_active = rgb(0x3a181d).into();
-        theme.primary = rgb(0xc8182a).into();
-        theme.primary_foreground = rgb(0xfff5f5).into();
-        theme.primary_hover = rgb(0xe02033).into();
-        theme.popover = rgb(0x12080b).into();
-        theme.progress_bar = rgb(0xc8182a).into();
-        theme.selection = rgba(0xc8182a55).into();
-        theme.sidebar = rgb(0x060304).into();
-        theme.sidebar_accent = rgb(0x2a1015).into();
-        theme.sidebar_border = rgb(0x220e12).into();
-        theme.title_bar_border = rgb(0x220e12).into();
-        theme.table_head = rgb(0x12080b).into();
-        theme.table_head_foreground = rgb(0xb89a9d).into();
-        theme.table_row_border = rgb(0x1e0e11).into();
-        theme.table_hover = rgb(0x1a0b0e).into();
-        theme.table_active = rgb(0x2a1015).into();
-        theme.table_active_border = rgb(0xc8182a).into();
+        theme.background = rgb(0x121212).into();
+        theme.foreground = rgb(0xffffff).into();
+        theme.border = rgba(0xffffff1a).into();
+        theme.muted = rgb(0x181818).into();
+        theme.muted_foreground = rgb(0xb3b3b3).into();
+        theme.secondary = rgb(0x1f1f1f).into();
+        theme.secondary_hover = rgba(0x40404066).into();
+        theme.secondary_active = rgba(0x5a5a5a66).into();
+        theme.primary = rgb(0x7c3aed).into();
+        theme.primary_foreground = rgb(0xffffff).into();
+        theme.primary_hover = rgba(0x9d6bffcc).into();
+        theme.popover = rgb(0x1f1f1f).into();
+        theme.progress_bar = rgb(0x7c3aed).into();
+        theme.selection = rgba(0x7c3aed66).into();
+        theme.sidebar = rgb(0x000000).into();
+        theme.sidebar_accent = rgba(0xffffff1a).into();
+        theme.sidebar_border = rgb(0x1f1f1f).into();
+        theme.title_bar_border = rgb(0x1f1f1f).into();
+        theme.table_head = rgba(0x181818cc).into();
+        theme.table_head_foreground = rgb(0xb3b3b3).into();
+        theme.table_row_border = rgba(0xffffff14).into();
+        theme.table_hover = rgba(0xffffff14).into();
+        theme.table_active = rgba(0x7c3aed33).into();
+        theme.table_active_border = rgb(0x7c3aed).into();
+        theme.radius = px(8.);
         theme
     }
 
@@ -766,7 +769,7 @@ impl Theme {
             ThemeKind::Rose => Self::rose(),
             ThemeKind::Lavender => Self::lavender(),
             ThemeKind::Amber => Self::amber(),
-            ThemeKind::Crimson => Self::crimson(),
+            ThemeKind::Violet => Self::violet(),
         }
     }
 
