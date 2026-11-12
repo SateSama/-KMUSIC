@@ -611,7 +611,7 @@ theme-ocean = Okyanus
 theme-rose = Gül
 theme-lavender = Lavanta
 theme-amber = Kehribar
-theme-crimson = Crimson
+theme-violet = Mor
 
 # corners
 corners-square = Köşeli

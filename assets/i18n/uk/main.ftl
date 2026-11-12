@@ -764,7 +764,7 @@ theme-ocean = Океан
 theme-rose = Троянда
 theme-lavender = Лаванда
 theme-amber = Бурштин
-theme-crimson = Crimson
+theme-violet = Фіолетовий
 
 # corners
 corners-square = Прямі

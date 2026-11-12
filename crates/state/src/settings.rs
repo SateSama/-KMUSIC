@@ -623,7 +623,7 @@ impl StateStore {
 impl Default for Appearance {
     fn default() -> Self {
         Self {
-            theme: "crimson".to_owned(),
+            theme: "violet".to_owned(),
             adaptive_theme: true,
             ambient: true,
             ambient_motion: true,

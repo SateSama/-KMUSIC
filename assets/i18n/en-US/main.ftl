@@ -771,7 +771,7 @@ theme-ocean = Ocean
 theme-rose = Rose
 theme-lavender = Lavender
 theme-amber = Amber
-theme-crimson = Crimson
+theme-violet = Violet
 theme-unavailable = { $name } (unavailable)
 
 # corners

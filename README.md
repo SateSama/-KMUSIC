@@ -1,7 +1,7 @@
 <div align="center">
 
 > **KMUSIC** is a personal fork of [Sonora](https://github.com/sonorahq/sonora) (GPL-3.0-or-later),
-> restyled with a gothic black-and-crimson theme. All credit for the original work goes to the
+> restyled with a modern violet-on-black theme. All credit for the original work goes to the
 > Sonora contributors. Usage reporting and update checks against the upstream project are disabled.
 
 

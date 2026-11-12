@@ -789,7 +789,7 @@ theme-ocean = Oceánský
 theme-rose = Růžový
 theme-lavender = Levandulový
 theme-amber = Jantarový
-theme-crimson = Crimson
+theme-violet = Fialový
 theme-unavailable = { $name } (nedostupné)
 
 # corners

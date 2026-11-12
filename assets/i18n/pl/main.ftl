@@ -766,7 +766,7 @@ theme-ocean = Ocean
 theme-rose = Róża
 theme-lavender = Lawenda
 theme-amber = Bursztyn
-theme-crimson = Crimson
+theme-violet = Fioletowy
 
 # corners
 corners-square = Proste

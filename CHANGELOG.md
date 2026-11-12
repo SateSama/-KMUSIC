@@ -7,6 +7,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- The default theme is Violet: a modern streaming-client look with near-black surfaces, a
+  purple accent and softer rounding, replacing the gothic crimson. Settings that still say
+  crimson keep working and resolve to it.
+
 ### Added
 
 - You can rank your lyrics providers in Settings, by dragging them or with the arrows. When two

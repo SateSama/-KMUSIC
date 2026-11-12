@@ -715,7 +715,7 @@ theme-ocean = Océano
 theme-rose = Rosa
 theme-lavender = Lavanda
 theme-amber = Ámbar
-theme-crimson = Carmesí
+theme-violet = Violeta
 
 # corners
 corners-square = Rectas

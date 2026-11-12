@@ -628,7 +628,7 @@ theme-ocean = 海洋
 theme-rose = 玫瑰
 theme-lavender = 薰衣草
 theme-amber = 琥珀
-theme-crimson = Crimson
+theme-violet = 紫罗兰
 
 # corners
 corners-square = 直角
