@@ -7,7 +7,7 @@ use gpui::{
     AnyElement, Context, Entity, MouseButton, MouseDownEvent, MouseMoveEvent, MouseUpEvent, Pixels,
     Point, Render, ScrollWheelEvent, SharedString,
 };
-use gpui::{Window, div, px};
+use gpui::{Window, div, linear_color_stop, linear_gradient, px};
 use i18n::t;
 use input::{ToggleFullscreen, ToggleLyrics, ToggleQueue};
 use state::{AppSettings, KMUSIC, Playback, Queue, SideTab};
@@ -25,6 +25,12 @@ const VOLUME_WIDTH: f32 = 110.;
 const VOLUME_TIGHT: f32 = 72.;
 const CLOCK_SHORT: f32 = 3.4;
 const CLOCK_LONG: f32 = 5.4;
+/// How thick the lit line along the top edge of the bar is.
+const GLOW_LINE: f32 = 1.;
+/// How much of the accent the lit line keeps at its brightest point.
+const GLOW_PEAK: f32 = 0.9;
+/// How coloured an accent has to be before the bar lights its top line.
+const GLOW_MIN_SATURATION: f32 = 0.3;
 
 pub(crate) struct PlayerBar {
     playback: Entity<Playback>,
@@ -443,10 +449,48 @@ impl Render for PlayerBar {
             .flex_none()
             .px_5()
             .when(stacked, |this| this.py_2())
+            .relative()
             .when_some(radius, |this, radius| this.rounded_b(radius))
-            .when(!theme.transparent, |this| this.bg(theme.secondary))
+            .when(!theme.transparent, |this| {
+                this.bg(linear_gradient(
+                    180.,
+                    linear_color_stop(theme.popover, 0.),
+                    linear_color_stop(theme.secondary, 1.),
+                ))
+            })
             .border_t_1()
             .border_color(theme.border)
+            // A neon line fading in from the left edge to the middle in the accent, then out
+            // to the right in its alternate. It sits over the border without taking part in
+            // the layout, and only themes with a coloured accent light it.
+            .when(theme.progress_bar.s > GLOW_MIN_SATURATION, |this| {
+                this.child(
+                    div()
+                        .absolute()
+                        .top(px(-GLOW_LINE))
+                        .left_0()
+                        .right_0()
+                        .h(px(GLOW_LINE))
+                        .bg(linear_gradient(
+                            90.,
+                            linear_color_stop(theme.progress_bar.opacity(0.), 0.),
+                            linear_color_stop(theme.progress_bar.opacity(GLOW_PEAK), 0.5),
+                        ))
+                        .child(
+                            div()
+                                .absolute()
+                                .top_0()
+                                .right_0()
+                                .h(px(GLOW_LINE))
+                                .w_1_2()
+                                .bg(linear_gradient(
+                                    90.,
+                                    linear_color_stop(theme.accent_alt().opacity(GLOW_PEAK), 0.),
+                                    linear_color_stop(theme.accent_alt().opacity(0.), 1.),
+                                )),
+                        ),
+                )
+            })
             .on_mouse_move(cx.listener(Self::hover));
 
         let context_menu = self.context_menu.clone().map(|(track, position)| {

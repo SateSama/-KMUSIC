@@ -727,36 +727,54 @@ impl Theme {
         theme
     }
 
-    /// Violet: a modern streaming-client dark look, near-black surfaces with
-    /// a purple accent and quiet borders.
+    /// Violet: a neon glass look. Ink-black surfaces with a violet cast, luminous
+    /// hairline borders, a bright violet accent and soft violet washes on hover and
+    /// selection. The pink end of the gradients comes from `Theme::accent_alt`.
     pub fn violet() -> Self {
         let mut theme = Self::dark();
-        theme.background = rgb(0x121212).into();
-        theme.foreground = rgb(0xffffff).into();
-        theme.border = rgba(0xffffff1a).into();
-        theme.muted = rgb(0x181818).into();
-        theme.muted_foreground = rgb(0xb3b3b3).into();
-        theme.secondary = rgb(0x1f1f1f).into();
-        theme.secondary_hover = rgba(0x40404066).into();
-        theme.secondary_active = rgba(0x5a5a5a66).into();
-        theme.primary = rgb(0x7c3aed).into();
+        theme.background = rgb(0x08060f).into();
+        theme.foreground = rgb(0xf5f3ff).into();
+        theme.border = rgba(0xa78bfa2e).into();
+        theme.muted = rgb(0x120d1f).into();
+        theme.muted_foreground = rgb(0xa59fbf).into();
+        theme.secondary = rgb(0x0f0a1c).into();
+        theme.secondary_hover = rgba(0x8b5cf633).into();
+        theme.secondary_active = rgba(0x8b5cf64d).into();
+        theme.primary = rgb(0x8b5cf6).into();
         theme.primary_foreground = rgb(0xffffff).into();
-        theme.primary_hover = rgba(0x9d6bffcc).into();
-        theme.popover = rgb(0x1f1f1f).into();
-        theme.progress_bar = rgb(0x7c3aed).into();
-        theme.selection = rgba(0x7c3aed66).into();
-        theme.sidebar = rgb(0x000000).into();
-        theme.sidebar_accent = rgba(0xffffff1a).into();
-        theme.sidebar_border = rgb(0x1f1f1f).into();
-        theme.title_bar_border = rgb(0x1f1f1f).into();
-        theme.table_head = rgba(0x181818cc).into();
-        theme.table_head_foreground = rgb(0xb3b3b3).into();
-        theme.table_row_border = rgba(0xffffff14).into();
-        theme.table_hover = rgba(0xffffff14).into();
-        theme.table_active = rgba(0x7c3aed33).into();
-        theme.table_active_border = rgb(0x7c3aed).into();
-        theme.radius = px(8.);
+        theme.primary_hover = rgba(0xa78bfacc).into();
+        theme.popover = rgb(0x150f26).into();
+        theme.progress_bar = rgb(0xa78bfa).into();
+        theme.selection = rgba(0x8b5cf666).into();
+        theme.sidebar = rgb(0x05030a).into();
+        theme.sidebar_accent = rgba(0x8b5cf63d).into();
+        theme.sidebar_border = rgba(0xa78bfa1f).into();
+        theme.title_bar_border = rgba(0xa78bfa1f).into();
+        theme.table_head = rgba(0x120d1fcc).into();
+        theme.table_head_foreground = rgb(0xa59fbf).into();
+        theme.table_row_border = rgba(0xa78bfa14).into();
+        theme.table_hover = rgba(0x8b5cf61f).into();
+        theme.table_active = rgba(0x8b5cf633).into();
+        theme.table_active_border = rgb(0xc084fc).into();
+        theme.radius = px(12.);
         theme
+    }
+
+    /// The second colour of the neon gradients: the accent's hue turned a few
+    /// degrees round the wheel, so violet lands on pink and any other theme on its
+    /// own neighbour rather than on a colour that clashes with it.
+    pub fn accent_alt(&self) -> Hsla {
+        Hsla {
+            h: (self.progress_bar.h + 0.12).rem_euclid(1.),
+            s: self.progress_bar.s.max(0.6),
+            l: self.progress_bar.l.clamp(0.55, 0.7),
+            a: 1.,
+        }
+    }
+
+    /// A faint wash of the accent, for the glow along a lit edge.
+    pub fn glow(&self) -> Hsla {
+        self.progress_bar.opacity(0.45)
     }
 
     pub fn for_kind(kind: ThemeKind) -> Self {
