@@ -9,9 +9,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- The default theme is Violet: a modern streaming-client look with near-black surfaces, a
-  purple accent and softer rounding, replacing the gothic crimson. Settings that still say
-  crimson keep working and resolve to it.
+- The default theme is Violet: a neon glass look with ink-black surfaces, luminous borders, a
+  bright purple accent and softer rounding, replacing the gothic crimson. Settings that still
+  say crimson keep working and resolve to it.
+- The player bar fades from the popover colour into the surface and, on themes with a coloured
+  accent, lights its top edge with a gradient from the accent to its pink neighbour.
 
 ### Added
 
